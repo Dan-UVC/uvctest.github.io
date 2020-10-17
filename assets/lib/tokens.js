@@ -56,7 +56,7 @@ function getStakingData() {
 		UVCX.balanceOf.call(web3.eth.accounts[0], function(error, info) {
     		if (!error) {var amount = info; console.log(amount);} 
     			else console.log(error); 
-    		})
+    		});
         	UVCXStaking.freeze(amount, function(error, hash) {
         	if (!error) console.log(hash); 
         		else console.log(error);
