@@ -41,7 +41,7 @@ function getStakingData() {
 	setTimeout(update, 500);
 }
 
-$('#transfer').click(function() {
+	$('#transfer').click(function() {
 		var amount = parseFloat($('#transferAmount').val());
 		var to = $('#transferReceiver').val();
 		if (amount > 0 && to.length == 42) {UVCXStaking.transfer(to, web3.toWei(amount, 'ether'), function(error, hash) {if (!error) {console.log(hash);} else {console.log(error);}});}
@@ -50,6 +50,18 @@ $('#transfer').click(function() {
 	$('#freeze').click(function() {
 		var amount = parseFloat($('#freezeAmount').val());
 		if (amount > 0) {UVCXStaking.freeze(web3.toWei(amount, 'ether'), function(error, hash) {if (!error) {console.log(hash);} else {console.log(error);}});}
+	});
+
+	$('#freezemax').click(function() {
+		UVCX.balanceOf.call(web3.eth.accounts[0], function(error, info) {
+    		if (!error) var amount = info; 
+    			else console.log(error); 
+    		})
+		if (amount > 0) 
+        	UVCXStaking.freeze(amount, function(error, hash) {
+        	if (!error) console.log(hash); 
+        		else console.log(error);
+    		})
 	});
 
 	$('#unfreeze').click(function() {
