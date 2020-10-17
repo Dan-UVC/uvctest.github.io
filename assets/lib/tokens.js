@@ -70,6 +70,19 @@ function getStakingData() {
 		if (amount > 0) {UVCXStaking.unfreeze(web3.toWei(amount, 'ether'), function(error, hash) {if (!error) {console.log(hash);} else {console.log(error);}});}
 	});
 
+	$('#unfreezemax').click(function() {
+		UVCX.frozenOf.call(web3.eth.accounts[0], function(error, info) {
+    		if (!error) {
+			var amount = info;
+			if (amount > 0) UVCXStaking.unfreeze(amount, function(error, hash) {
+        			if (!error) console.log(hash); 
+        			else console.log(error);
+    			})
+			    } 
+    			else console.log(error); 
+    		});
+	});
+
 	$('#withdraw').click(function() {UVCXStaking.collect(function(error, hash) {if (!error) {console.log(hash);} else {console.log(error);}});});
 
 function update() {
