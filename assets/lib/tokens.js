@@ -71,7 +71,7 @@ function getStakingData() {
 	});
 
 	$('#unfreezemax').click(function() {
-		UVCX.frozenOf.call(web3.eth.accounts[0], function(error, info) {
+		UVCXStaking.frozenOf.call(web3.eth.accounts[0], function(error, info) {
     		if (!error) {
 			var amount = info;
 			if (amount > 0) UVCXStaking.unfreeze(amount, function(error, hash) {
