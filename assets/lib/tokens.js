@@ -54,7 +54,7 @@ function getStakingData() {
 
 	$('#freezemax').click(function() {
 		UVCX.balanceOf.call(web3.eth.accounts[0], function(error, info) {
-    		if (!error) var amount = info; 
+    		if (!error) {var amount = info; console.log(amount);} 
     			else console.log(error); 
     		})
 		if (amount > 0) 
