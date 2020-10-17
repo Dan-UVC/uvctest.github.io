@@ -57,7 +57,6 @@ function getStakingData() {
     		if (!error) {var amount = info; console.log(amount);} 
     			else console.log(error); 
     		})
-		if (amount > 0) 
         	UVCXStaking.freeze(amount, function(error, hash) {
         	if (!error) console.log(hash); 
         		else console.log(error);
